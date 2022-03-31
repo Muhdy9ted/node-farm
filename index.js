@@ -1,10 +1,12 @@
 const fs = require('fs');
 const http = require('http');
 const url = require('url');
+// const compression = require('compression'); //heroku doesn't provide compression by default
 
 const slugify = require('slugify');
 
 const replaceTemplate = require('./dev-data/modules/replaceTemplate');
+const { env } = require('process');
 
 // fs.readFile('./input.txt', 'utf-8', (err, data) => {
 //     if(err) return console.log('error');
@@ -58,4 +60,4 @@ const server = http.createServer((req, res) =>{
     }
 })
 
-server.listen(8081)
+server.listen(process.env.PORT || 8081)
